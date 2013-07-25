@@ -26,7 +26,7 @@ if test ! -e "$DATAFILE" ; then
 fi
 
 if [ "$(checkChanges)" != "change" ] ; then
-      printf "Changes for today have already been commited. \n";
+      printf "Changes for today ($DATESTRING) have already been commited. \n";
       exit
 fi
 
