@@ -4,14 +4,15 @@
 #
 # Ben Mearns 
 
-# Need to be in ftapi to run Fusion Table executables
-cd ~/limabean/ftapi/
-
 # Global Declarations
 declare -rx DATESTRING=$(date +%m%d%y)
-declare -rx DATAFILE=~/limabean/data/$DATESTRING.csv
+declare -rx DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+declare -rx DATAFILE=$DIR/data/$DATESTRING.csv
 declare -rx CHANGETABLE_ID=1HAvac1Iy4LsNqBkezgVJX04hwcKvWh4sGpNo7u8
 declare -rx DATATABLE_ID=1poH7Gdu_7R3NiCA_EonEMwyf90KY_zrujddYCX4
+
+# Need to be in ftapi to run Fusion Table executables
+cd $DIR/ftapi/
 
 # Sanity Checks
 function checkChanges(){ ./ftsql.sh "SELECT * from $CHANGETABLE_ID where change = $DATESTRING" ; }
