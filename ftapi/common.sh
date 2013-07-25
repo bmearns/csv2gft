@@ -7,6 +7,7 @@ trap "rm -f *.tmp" EXIT
 # Redirect URI for "installed application"
 redirect_uri=urn:ietf:wg:oauth:2.0:oob
 declare expires_at
+declare expires_in=3600
 
 # Opens the given URL in a browser
 function browse() {
