@@ -1,16 +1,23 @@
 #!/bin/bash
 #
-# Update Fusion Table with limabean project data and record in change table
+# Update Fusion Table with csv data and do sanity checks, including a
+# second FT for changes
 #
 # Ben Mearns
+# Public Branch, requires the following
+# -a .csv file under the ./data directory with current  MMDDYY.csv name
+# -CHANGETABLE_ID and DATATABLE_ID from Google Fusion Tables
+# -DATAIDCOLUMN, a unique ID field for your data table
+# -f1 to fn, where n is the number of columns in data field in checkDuplicates()
+#
 
 # Global Declarations
 declare -rx DATESTRING=$(date +%m%d%y)
 declare -rx DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 declare -rx DATAFILE=$DIR/data/$DATESTRING.csv
-declare -rx CHANGETABLE_ID=1HAvac1Iy4LsNqBkezgVJX04hwcKvWh4sGpNo7u8
-declare -rx DATATABLE_ID=1poH7Gdu_7R3NiCA_EonEMwyf90KY_zrujddYCX4
-declare -rx DATAIDCOLUMN=div_measurement_id
+declare -rx CHANGETABLE_ID=YOURIDHERE
+declare -rx DATATABLE_ID=YOURIDHERE
+declare -rx DATAIDCOLUMN=YOURFIELDHERE
 
 # Need to be in ftapi to run Fusion Table executables
 cd $DIR/ftapi/
