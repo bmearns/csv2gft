@@ -1,0 +1,22 @@
+Author: Ben Mearns, mearns@udel.edu
+
+This code builds upon a sample from Google, using the Google Fusion Tables API through shell scripts.  
+Originally fetched from http://fusion-tables-api-samples.googlecode.com/svn/trunk/ftapi/
+
+This code specifically updates an existing Fusion Table with csv data, with name of format /data/MMDDYY.csv
+and does sanity checks, including a second FT for changes (which records the MMDDYY string), checks
+that a data/MMDDYY.csv file is present, and checks the data table for duplicates based on an ID column.
+
+To use this code you will need to do the following:
+-an X server (such as Xming) should be present on your terminal, to run the scripts to generate credentials
+-follow instructions in ftapi/README.html, which will walk you through obtaining an API key and generating
+ftapi/credentials.sh by running ftapi/RUN_ME_FIRST.sh
+-create 2 fusion tables, one for data and one for changes, and obtain the IDs for these tables.  The sample
+data/MMDDYY.csv assumes a 10 string column data table, and update.sh assumes a 1 string column table, with column named
+"changes"
+-update the sample data/MMDDYY.csv with the current MMDDYY
+-An ID column in the data table will be used for detecting duplicates.  After testing the sample, you will need to 
+delete all rows to run again and not trigger the duplicate error.  You should eventually create a column that will
+serve as a unique ID
+-currently update.sh assumes a 10 column table, you will need to update f1 to fn, where n is the number of columns 
+in data column in checkDuplicates(), once you have changed the data and fusion table to be a different number of columns
